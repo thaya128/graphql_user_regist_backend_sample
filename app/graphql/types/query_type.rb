@@ -4,6 +4,7 @@ module Types
     include GraphQL::Types::Relay::HasNodeField
     include GraphQL::Types::Relay::HasNodesField
 
+    field :book, resolver: Resolvers::BookResolver
     field :books, resolver: Resolvers::BooksResolver
   end
 end
