@@ -1,12 +1,12 @@
-app/graphql/mutations/create_book.rb
 module Mutations
   class CreateBook < Mutations::BaseMutation
-    argument :params, InputTypes::Book, required: true
+    field :book, Types::BookType, null: false
 
-    field :book, ObjectTypes::Book, null: false
+    argument :title, String, required: false
+    argument :discription, String, required: false
 
-    def resolve(params:)
-      book = Book.create!(params.to_h)
+    def resolve(**args)
+      book = Book.create!(args)
       { book: book }
     rescue => e
       GraphQL::ExecutionError.new(e.message)
