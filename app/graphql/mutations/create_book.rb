@@ -2,11 +2,11 @@ module Mutations
   class CreateBook < Mutations::BaseMutation
     field :book, Types::BookType, null: false
 
-    argument :title, String, required: false
-    argument :discription, String, required: false
+    argument :params, InputTypes::Book, required: true
 
-    def resolve(**args)
-      book = Book.create!(args)
+    def resolve(params:)
+      book = Book.create!(params.to_h)
+
       { book: book }
     rescue => e
       GraphQL::ExecutionError.new(e.message)

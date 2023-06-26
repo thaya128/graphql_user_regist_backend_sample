@@ -3,12 +3,12 @@ module Mutations
     field :book, Types::BookType, null: false
 
     argument :id, ID, required: true
-    argument :title, String, required: false
-    argument :discription, String, required: false
+    argument :params, InputTypes::Book, required: true
 
-    def resolve(id:, title:, discription:)
+    def resolve(id:, params:)
       book = Book.find(id)
-      book.update!(title: title, discription: discription)
+      book.update!(params.to_h)
+
       { book: book }
     rescue => e
       GraphQL::ExecutionError.new(e.message)
