@@ -29,10 +29,11 @@ gem 'graphql-batch'
 gem 'dotenv'
 gem 'ridgepole'
 gem 'seed-fu'
-
-gem 'rubocop', require: false
+gem 'devise'
+gem 'devise-jwt'
 
 group :development do
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
+  gem 'rubocop', require: false
 end

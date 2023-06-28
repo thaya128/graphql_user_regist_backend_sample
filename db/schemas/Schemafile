@@ -1,1 +1,2 @@
 require 'books.schema.rb'
+require 'users.schema.rb'
