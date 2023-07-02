@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  belongs_to :book, optional: true
+
   include Devise::JWT::RevocationStrategies::JTIMatcher
 
   # Include default devise modules. Others available are:
